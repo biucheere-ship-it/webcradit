@@ -105,8 +105,22 @@ textarea{resize:none;height:90px}
 .empty{text-align:center;color:var(--m);padding:16px}
 :focus-visible{outline:2px solid var(--d);outline-offset:2px}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ===== เพิ่ม: ก้อนเมฆลอย (ขาว มินิมอล ขนาดเล็ก ขอบโค้งเป็นกลีบ) ===== */
+.sky{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.sky i{position:absolute;left:0;top:var(--t);width:120px;height:52px;opacity:var(--o,.9);scale:var(--s,1);transform-origin:0 0;filter:drop-shadow(0 2px 5px color-mix(in srgb,var(--d) 13%,transparent));animation:cdrift var(--du,100s) linear var(--l,0s) infinite,cbob 9s ease-in-out var(--l,0s) infinite alternate;
+background:
+ radial-gradient(circle 14px at 24px 34px,#fff 98%,transparent),
+ radial-gradient(circle 20px at 48px 24px,#fff 98%,transparent),
+ radial-gradient(circle 16px at 74px 28px,#fff 98%,transparent),
+ radial-gradient(circle 12px at 96px 36px,#fff 98%,transparent),
+ linear-gradient(#fff,#fff) 24px 34px/72px 14px no-repeat}
+@keyframes cdrift{from{transform:translateX(-200px)}to{transform:translateX(calc(100vw + 60px))}}
+@keyframes cbob{to{translate:0 -10px}}
+@media(prefers-reduced-motion:reduce){.sky i{left:12%}.sky i:nth-child(even){left:60%}}
 </style></head>
 <body>
+<div class="sky" aria-hidden="true"><i style="--t:5%;--s:1.0;--du:80s;--l:-10s;--o:0.95"></i><i style="--t:14%;--s:0.6;--du:140s;--l:-90s;--o:0.8"></i><i style="--t:24%;--s:0.85;--du:105s;--l:-40s;--o:0.9"></i><i style="--t:34%;--s:1.2;--du:70s;--l:-55s;--o:0.95"></i><i style="--t:45%;--s:0.65;--du:135s;--l:-20s;--o:0.8"></i><i style="--t:55%;--s:0.95;--du:95s;--l:-75s;--o:0.9"></i><i style="--t:66%;--s:0.7;--du:125s;--l:-110s;--o:0.85"></i><i style="--t:77%;--s:1.1;--du:75s;--l:-30s;--o:0.95"></i><i style="--t:88%;--s:0.6;--du:150s;--l:-60s;--o:0.8"></i><i style="--t:40%;--s:0.5;--du:160s;--l:-130s;--o:0.7"></i></div>
 <div class="blob b1"></div><div class="blob b2"></div>
 <div id="shell">
 <header><h1 id="hn">🐾</h1><button class="burger" onclick="tm()" aria-label="เมนู"><i></i><i></i><i></i></button></header>
@@ -131,7 +145,8 @@ const CONFIG={
   REPORT_URL:'https://lin.ee/SsyQXND'      // ลิงก์รายงานร้านค้า
 };
 /* ================================ */
-const THEMES={green:['เขียว','#BDEBD6','#F5FCF8','#2E7D5B'],pink:['ชมพู','#FFC9DE','#FFF7FA','#C2417A'],blue:['ฟ้า','#C3E2FF','#F5FAFF','#2B6CB0'],orange:['ส้ม','#FFD9B8','#FFF9F3','#C2610F'],yellow:['เหลือง','#FFF3B8','#FFFDF2','#8A6D00'],purple:['ม่วง','#E1D2FF','#FAF7FF','#6B46C1'],red:['แดง','#FFC4C4','#FFF6F6','#C53030']};
+const THEMES={green:['เขียว','#BDEBD6','#F5FCF8','#2E7D5B'],pink:['ชมพู','#FFC9DE','#FFF7FA','#C2417A'],blue:['ฟ้า','#C3E2FF','#F5FAFF','#2B6CB0'],orange:['ส้ม','#FFD9B8','#FFF9F3','#C2610F'],yellow:['เหลือง','#FFF3B8','#FFFDF2','#8A6D00'],purple:['ม่วง','#E1D2FF','#FAF7FF','#6B46C1'],red:['แดง','#FFC4C4','#FFF6F6','#C53030'],
+mint:['มิ้นต์','#C8F0E4','#F6FDFA','#2F8F7A'],sage:['เซจ','#D5E4CF','#F8FBF6','#5E7F52'],peach:['พีช','#FFD6CC','#FFF8F6','#C2563F'],honey:['น้ำผึ้ง','#FFE2BF','#FFFAF3','#B8730F'],butter:['เนย','#FFF0C2','#FFFDF4','#967A12'],sky:['ฟ้าใส','#CDEBFA','#F5FBFE','#2C7DA0'],peri:['คราม','#D3D9FA','#F7F8FF','#4F5DB5'],lav:['ลาเวน','#E6D9F5','#FBF8FE','#7B5AA6'],lilac:['ไลแลค','#F0D3F0','#FEF8FE','#A24BA2'],rose:['กุหลาบ','#F8D0D6','#FEF7F8','#B04A63'],sand:['ทราย','#EADFCF','#FCFAF6','#8A6D4B'],grey:['เทา','#DADDE3','#F8F9FA','#5B6573']};
 const CT={line:['LINE','💚',v=>'https://line.me/ti/p/~'+v.replace('@','%40')],facebook:['Facebook','💙',v=>/^http/.test(v)?v:'https://facebook.com/'+v],ig:['Instagram','💗',v=>'https://instagram.com/'+v.replace('@','')],discord:['Discord','💜',v=>/^http/.test(v)?v:'https://discord.gg/'+v],telegram:['Telegram','💙',v=>'https://t.me/'+v.replace('@','')],phone:['Tel','📞',v=>'tel:'+v]};
 let S={cfg:{name:'ร้านน้องแมว',theme:'pink',contacts:[]},reviews:[]},tok=null,me='',view='home',tab='stats',stars=0,ed=null,SH=(new URLSearchParams(location.search).get('shop')||'').trim().toLowerCase(),mys='',shops=[],liked={};
 const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

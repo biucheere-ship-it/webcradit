@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="th"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>รีวิวร้านค้า</title>
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--p:#FFC1D9;--bg:#FFF7FA;--d:#C2417A;--t:#4a3f46;--m:#a79ba2}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{min-height:100%}
+body{margin:0;font-family:'Mali',system-ui,sans-serif;background:var(--bg);color:var(--t);transition:background .6s;padding-bottom:env(safe-area-inset-bottom);overflow-x:hidden}
+.blob{position:fixed;z-index:-1;border-radius:50%;background:var(--p);opacity:.35;filter:blur(50px);transition:background .6s;animation:drift 14s ease-in-out infinite alternate}
+.b1{width:260px;height:260px;top:-80px;left:-80px}.b2{width:220px;height:220px;bottom:-60px;right:-60px;animation-delay:-6s}
+@keyframes drift{to{transform:translate(40px,50px) scale(1.15)}}
+header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:calc(10px + env(safe-area-inset-top)) 18px 10px;background:color-mix(in srgb,var(--bg) 70%,transparent);backdrop-filter:blur(12px)}
+header h1{font-size:18px;margin:0;color:var(--d);font-weight:600}
+.burger{width:40px;height:40px;border:1.5px solid var(--p);border-radius:50%;background:#fff;display:grid;place-content:center;gap:4px;cursor:pointer;transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.burger:hover{transform:rotate(12deg) scale(1.08)}.burger:active{transform:scale(.88)}
+.burger:disabled{opacity:.35;cursor:not-allowed}
+.burger i{display:block;width:16px;height:2px;border-radius:2px;background:var(--d);transition:.3s}
+.open .burger i:nth-child(1){transform:translateY(6px) rotate(45deg)}.open .burger i:nth-child(2){opacity:0}.open .burger i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+nav{position:fixed;top:calc(58px + env(safe-area-inset-top));right:14px;z-index:19;background:#fff;border:1.5px solid var(--p);border-radius:22px;padding:6px;width:236px;transform:scale(.5);transform-origin:top right;opacity:0;pointer-events:none;transition:.3s cubic-bezier(.3,1.6,.5,1)}
+.open nav{transform:none;opacity:1;pointer-events:auto}
+nav button{display:block;width:100%;text-align:left;border:0;background:none;font:inherit;font-size:14px;padding:11px 14px;border-radius:14px;color:var(--t);cursor:pointer;opacity:0;transform:translateX(14px);transition:.25s}
+.open nav button{opacity:1;transform:none}
+.open nav button:nth-child(2){transition-delay:.05s}.open nav button:nth-child(3){transition-delay:.1s}.open nav button:nth-child(4){transition-delay:.15s}.open nav button:nth-child(5){transition-delay:.2s}
+nav button:hover{background:var(--bg);padding-left:20px}
+main{padding:14px 16px 40px;max-width:540px;margin:auto}
+.card{background:#fff;border:1.5px solid color-mix(in srgb,var(--p) 55%,#fff);border-radius:26px;padding:20px;margin-bottom:14px;animation:pop .6s cubic-bezier(.3,1.5,.5,1) backwards}
+.card:nth-child(2){animation-delay:.1s}.card:nth-child(3){animation-delay:.2s}
+@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.94)}}
+.hero{text-align:center}
+.hero .big{font-size:46px;font-weight:700;color:var(--d);line-height:1;margin-top:4px}
+.cat{width:116px;height:96px;cursor:pointer;user-select:none;transition:transform .2s}
+.cat .tail{transform-origin:88px 84px;animation:wag 1.4s ease-in-out infinite}
+.cat .eyes{transform-origin:60px 50px;animation:blink 4s infinite}
+.cat .pu{transform:translate(var(--ex,0),var(--ey,0));transition:transform .15s}
+.cat .ear{transform-origin:60px 40px;transition:.2s}
+.cat:hover .ear{transform:rotate(-3deg)}
+.cat.jump{animation:jump .6s cubic-bezier(.3,1.6,.5,1)}
+.cat{animation:bob 2.6s ease-in-out infinite}
+@keyframes wag{50%{transform:rotate(-24deg)}}
+@keyframes blink{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+@keyframes bob{50%{transform:translateY(-4px)}}
+@keyframes jump{30%{transform:translateY(-28px) rotate(-8deg) scale(1.1)}60%{transform:translateY(0) scale(1.1,.9)}}
+h2{font-size:16px;margin:0 0 12px;color:var(--d);font-weight:600}
+input,textarea,select{width:100%;font:inherit;font-size:15px;padding:12px 16px;border:1.5px solid color-mix(in srgb,var(--p) 70%,#fff);border-radius:16px;background:var(--bg);color:var(--t);margin-bottom:10px;outline:none;transition:.25s}
+input:focus,textarea:focus,select:focus{border-color:var(--d);background:#fff;box-shadow:0 0 0 4px color-mix(in srgb,var(--p) 45%,transparent);transform:translateY(-1px)}
+textarea{resize:none;height:90px}
+.btn{position:relative;overflow:hidden;width:100%;border:0;border-radius:999px;padding:14px 22px;font:inherit;font-weight:700;font-size:15px;letter-spacing:.2px;color:#fff;text-shadow:0 1px 0 color-mix(in srgb,var(--d) 40%,transparent);background:linear-gradient(135deg,color-mix(in srgb,var(--p) 60%,var(--d)),var(--d));cursor:pointer;box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),0 8px 18px -6px color-mix(in srgb,var(--d) 55%,transparent);transition:transform .3s cubic-bezier(.3,1.6,.5,1),box-shadow .3s}
+.btn:before{content:"";position:absolute;top:0;left:-70%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .6s}
+.btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),0 14px 24px -8px color-mix(in srgb,var(--d) 65%,transparent)}
+.btn:hover:before{left:130%}
+.btn:active{transform:translateY(0) scale(.95)}
+.btn.s{width:auto;padding:9px 18px;font-size:14px}
+.btn.g{background:#fff;color:var(--d);text-shadow:none;border:1.5px dashed var(--d);box-shadow:none}
+.btn.g:hover{background:var(--bg);box-shadow:0 8px 16px -8px color-mix(in srgb,var(--d) 40%,transparent)}
+.btn.r{background:linear-gradient(135deg,#ffc9c9,#ff9a9a);color:#fff;text-shadow:0 1px 0 rgba(180,60,60,.35);box-shadow:inset 0 1.5px 0 rgba(255,255,255,.55),0 8px 18px -6px rgba(255,120,120,.6)}
+.rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.7);transform:scale(0);animation:rip .6s ease-out forwards;pointer-events:none}
+@keyframes rip{to{transform:scale(4);opacity:0}}
+.stars{display:flex;gap:2px;justify-content:center;margin-bottom:12px}
+.stars button{border:0;background:none;font-size:38px;cursor:pointer;color:#ece4e8;transition:.25s cubic-bezier(.3,1.8,.5,1);padding:0 2px;line-height:1}
+.stars button:hover{transform:scale(1.25) rotate(-10deg)}
+.stars button.on{color:#FFC93C;animation:starpop .5s cubic-bezier(.3,1.8,.5,1) backwards;animation-delay:calc(var(--i)*.06s)}
+@keyframes starpop{from{transform:scale(0) rotate(-90deg)}}
+.rv{padding:14px 0;border-bottom:1.5px dashed color-mix(in srgb,var(--p) 60%,#fff);animation:pop .5s cubic-bezier(.3,1.4,.5,1) backwards;animation-delay:calc(var(--i)*.07s)}
+.rv:last-child{border:0}
+.rv .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.rv b{font-size:15px}.rv small{color:var(--m)}
+.st{color:#FFC93C;letter-spacing:1px}
+.rv p{margin:6px 0;font-size:14px;word-break:break-word}
+.lk{border:0;background:none;font-size:18px;cursor:pointer;color:#d8ccd2;padding:0;transition:.3s cubic-bezier(.3,2,.5,1)}
+.lk.on{color:#ff6b9d;transform:scale(1.3)}
+.reply{background:var(--bg);border-radius:14px;padding:8px 12px;font-size:13px;margin-top:6px;border-left:3px solid var(--p)}
+.bar{display:flex;align-items:center;gap:8px;font-size:13px;margin:6px 0}
+.bar div{flex:1;height:10px;border-radius:9px;background:var(--bg);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--p);border-radius:9px;animation:grow 1s cubic-bezier(.3,1.2,.5,1) backwards}
+@keyframes grow{from{width:0!important}}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:14px;padding:2px}
+.tabs button{flex:none;border:1.5px solid var(--p);border-radius:999px;padding:8px 14px;font:inherit;font-size:13px;background:#fff;color:var(--d);cursor:pointer;transition:.25s cubic-bezier(.3,1.6,.5,1)}
+.tabs button:hover{transform:translateY(-2px)}
+.tabs .on{background:linear-gradient(135deg,var(--p),color-mix(in srgb,var(--p) 55%,var(--d)));color:#fff;border-color:transparent;box-shadow:0 6px 14px -6px var(--d)}
+.themes{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.themes button{border:3px solid #fff;outline:1.5px solid var(--p);height:52px;border-radius:50%;cursor:pointer;font-size:11px;font-family:inherit;transition:.3s cubic-bezier(.3,1.8,.5,1)}
+.themes button:hover{transform:scale(1.12) rotate(8deg)}
+.themes button.on{outline:2px solid var(--t);transform:scale(1.15)}
+.row{display:flex;gap:8px}.row select{width:110px;flex:none}
+.sheet{position:fixed;inset:0;background:rgba(74,63,70,.25);backdrop-filter:blur(3px);z-index:30;display:none;align-items:flex-end}
+.sheet.show{display:flex}
+.sheet>div{background:#fff;width:100%;max-width:560px;margin:auto;border-radius:30px 30px 0 0;padding:20px 20px calc(24px + env(safe-area-inset-bottom));animation:up .4s cubic-bezier(.3,1.4,.5,1)}
+@keyframes up{from{transform:translateY(100%)}}
+.ct{display:flex;align-items:center;gap:12px;padding:12px;margin-bottom:8px;border-radius:18px;background:var(--bg);text-decoration:none;color:var(--t);font-size:15px;transition:.25s cubic-bezier(.3,1.6,.5,1)}
+.ct:hover{transform:translateX(6px) scale(1.02)}
+.loader{position:fixed;inset:0;z-index:50;background:rgba(255,255,255,.8);backdrop-filter:blur(6px);display:none;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.loader.show{display:flex}
+.runner{animation:runx 1.5s ease-in-out infinite alternate}
+.runner .cat{animation:hop .35s ease-in-out infinite}
+@keyframes runx{from{transform:translateX(-90px)}to{transform:translateX(90px)}}
+@keyframes hop{50%{transform:translateY(-14px) rotate(5deg)}}
+.toast{position:fixed;left:50%;bottom:30px;transform:translate(-50%,120px);background:var(--t);color:#fff;padding:11px 20px;border-radius:999px;z-index:60;transition:.45s cubic-bezier(.3,1.6,.5,1);font-size:14px;white-space:nowrap}
+.toast.show{transform:translate(-50%,0)}
+.fx{position:fixed;z-index:70;font-size:24px;pointer-events:none;animation:fly 1.2s ease-out forwards}
+@keyframes fly{to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
+.paw{position:fixed;z-index:70;font-size:16px;pointer-events:none;opacity:.7;animation:paw .9s ease-out forwards}
+@keyframes paw{to{transform:translateY(-26px) scale(1.6);opacity:0}}
+.empty{text-align:center;color:var(--m);padding:16px}
+:focus-visible{outline:2px solid var(--d);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div>
+<div id="shell">
+<header><h1 id="hn">🐾</h1><button class="burger" onclick="tm()" aria-label="เมนู"><i></i><i></i><i></i></button></header>
+<nav>
+<button onclick="go('rv')">⭐ รีวิวทั้งหมด</button>
+<button onclick="go('ct')">💬 ติดต่อร้านค้า</button>
+<button onclick="go('web')">🛠️ ติดต่อสร้างเว็บไซต์</button>
+<button onclick="go('rep')">🚩 รายงานร้านค้า</button>
+<button onclick="go('ad')">🔐 เข้าสู่ระบบสำหรับแอดมิน</button>
+</nav>
+<main id="app"></main>
+</div>
+<div class="sheet" id="sh" onclick="if(event.target===this)this.classList.remove('show')"><div id="shb"></div></div>
+<div class="loader" id="ld"><div class="runner" id="lc"></div><div style="color:var(--d);font-weight:700;margin-top:6px">กำลังโหลด...</div></div>
+<div class="toast" id="ts"></div>
+
+<script>
+/* ===== ตั้งค่า (แก้ตรงนี้) ===== */
+const CONFIG={
+  API:'https://script.google.com/macros/s/AKfycbzkm2XT3NaolUFrTEKFQuJQ-m21ChVQJJ0tUkUA9iQwX1W-bL_hLToJKtLj0O_Xj10x/exec', // วาง URL ของ Google Apps Script Web App (ถ้าว่าง = โหมดทดลอง ข้อมูลไม่ถูกเก็บถาวร)
+  BUILDER_URL:'https://lin.ee/SsyQXND', // ลิงก์ติดต่อสร้างเว็บไซต์
+  REPORT_URL:'https://lin.ee/SsyQXND'      // ลิงก์รายงานร้านค้า
+};
+/* ================================ */
+const THEMES={green:['เขียว','#BDEBD6','#F5FCF8','#2E7D5B'],pink:['ชมพู','#FFC9DE','#FFF7FA','#C2417A'],blue:['ฟ้า','#C3E2FF','#F5FAFF','#2B6CB0'],orange:['ส้ม','#FFD9B8','#FFF9F3','#C2610F'],yellow:['เหลือง','#FFF3B8','#FFFDF2','#8A6D00'],purple:['ม่วง','#E1D2FF','#FAF7FF','#6B46C1'],red:['แดง','#FFC4C4','#FFF6F6','#C53030']};
+const CT={line:['LINE','💚',v=>'https://line.me/ti/p/~'+v.replace('@','%40')],facebook:['Facebook','💙',v=>/^http/.test(v)?v:'https://facebook.com/'+v],ig:['Instagram','💗',v=>'https://instagram.com/'+v.replace('@','')],discord:['Discord','💜',v=>/^http/.test(v)?v:'https://discord.gg/'+v],telegram:['Telegram','💙',v=>'https://t.me/'+v.replace('@','')],phone:['Tel','📞',v=>'tel:'+v]};
+let S={cfg:{name:'ร้านน้องแมว',theme:'pink',contacts:[]},reviews:[]},tok=null,me='',view='home',tab='stats',stars=0,ed=null,SH=(new URLSearchParams(location.search).get('shop')||'').trim().toLowerCase(),mys='',shops=[],liked={};
+const $=id=>document.getElementById(id),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const cat=c=>`<svg class="cat ${c||''}" viewBox="0 0 120 100" onclick="pet(this)"><g class="tail"><path d="M88 84Q122 84 112 48" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/></g><ellipse cx="60" cy="80" rx="32" ry="20" fill="#fff"/><g class="ear"><path d="M30 38L34 12L52 28ZM90 38L86 12L68 28Z" fill="#fff"/><path d="M36 22l-3 10 9-5zM84 22l3 10-9-5z" fill="var(--p)"/></g><circle cx="60" cy="50" r="30" fill="#fff"/><g class="eyes"><ellipse class="pu" cx="48" cy="50" rx="3.5" ry="5" fill="#444"/><ellipse class="pu" cx="72" cy="50" rx="3.5" ry="5" fill="#444"/></g><ellipse cx="37" cy="60" rx="6" ry="4" fill="var(--p)"/><ellipse cx="83" cy="60" rx="6" ry="4" fill="var(--p)"/><path d="M57 57h6l-3 4z" fill="#f48fb1"/><path d="M60 61q-4 5-8 2M60 61q4 5 8 2" stroke="#444" fill="none" stroke-linecap="round"/></svg>`;
+$('lc').innerHTML=cat();
+
+/* ===== เสียง + เอฟเฟกต์ ===== */
+function meow(){try{const a=new (window.AudioContext||window.webkitAudioContext)(),o=a.createOscillator(),g=a.createGain(),f=a.createBiquadFilter();o.type='sawtooth';f.type='bandpass';f.Q.value=3;o.connect(f);f.connect(g);g.connect(a.destination);const t=a.currentTime;o.frequency.setValueAtTime(500,t);o.frequency.linearRampToValueAtTime(900,t+.18);o.frequency.linearRampToValueAtTime(450,t+.55);f.frequency.setValueAtTime(900,t);f.frequency.linearRampToValueAtTime(1800,t+.2);f.frequency.linearRampToValueAtTime(800,t+.55);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.35,t+.06);g.gain.linearRampToValueAtTime(0,t+.6);o.start(t);o.stop(t+.62)}catch(e){}}
+function burst(x,y,n,em){em=em||['🐾','💖','⭐','🌸','✨'];for(let i=0;i<n;i++){const s=document.createElement('span');s.className='fx';s.textContent=em[i%em.length];s.style.left=x+'px';s.style.top=y+'px';s.style.setProperty('--x',(Math.random()*300-150)+'px');s.style.setProperty('--y',(-Math.random()*280-30)+'px');s.style.setProperty('--r',(Math.random()*360)+'deg');document.body.appendChild(s);setTimeout(()=>s.remove(),1300)}}
+const confetti=()=>burst(innerWidth/2,innerHeight*.55,24);
+function pet(el){el.classList.remove('jump');void el.getBoundingClientRect();el.classList.add('jump');meow();const r=el.getBoundingClientRect();burst(r.left+r.width/2,r.top+10,6,['💖','✨'])}
+function toast(m){const t=$('ts');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2200)}
+let lc=0;function load(on){lc+=on?1:-1;$('ld').classList.toggle('show',lc>0)}
+/* รอยเท้าแมวตามจุดที่แตะ + ริปเปิลบนปุ่ม + แมวมองตามเมาส์ */
+let lastP=0;
+addEventListener('pointerdown',e=>{const p=document.createElement('span');p.className='paw';p.textContent='🐾';p.style.left=(e.clientX-8)+'px';p.style.top=(e.clientY-8)+'px';document.body.appendChild(p);setTimeout(()=>p.remove(),900);
+ const b=e.target.closest('.btn');if(b){const r=b.getBoundingClientRect(),d=document.createElement('span');d.className='rip';d.style.cssText=`width:30px;height:30px;left:${e.clientX-r.left-15}px;top:${e.clientY-r.top-15}px`;b.appendChild(d);setTimeout(()=>d.remove(),600)}});
+addEventListener('pointermove',e=>{const n=Date.now();if(n-lastP<50)return;lastP=n;const s=document.documentElement.style;s.setProperty('--ex',Math.max(-4,Math.min(4,(e.clientX/innerWidth-.5)*10))+'px');s.setProperty('--ey',Math.max(-3,Math.min(3,(e.clientY/innerHeight-.5)*8))+'px')});
+function countUp(el,to,dec){if(!el)return;const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/900),e=1-Math.pow(1-k,3);el.textContent=(to*e).toFixed(dec);if(k<1)requestAnimationFrame(f)})(t0)}
+
+/* ===== API (Google Sheets ผ่าน Apps Script / โหมดทดลอง) ===== */
+const demo={me:null,admins:[{u:'admin',p:'1234',s:'demo'},{u:'meow',p:'1234',s:'cat'}],shops:{demo:{name:'ร้านน้องแมว',theme:'pink',contacts:[]},cat:{name:'คาเฟ่แมวเหมียว',theme:'blue',contacts:[]}},revs:[{id:1,shop:'demo',name:'น้องมะลิ',stars:5,text:'ร้านน่ารักมาก บริการดีสุดๆ 💖',date:Date.now()-864e5,reply:'ขอบคุณค้าบ 🐱'},{id:2,shop:'cat',name:'พี่ต้น',stars:4,text:'ของอร่อย รอไม่นาน',date:Date.now()-3e5,reply:''}]};
+const sl=()=>Object.keys(demo.shops).map(c=>({code:c,name:demo.shops[c].name}));
+function demoCall(a,d){const bad={ok:false,err:'ไม่มีสิทธิ์'},sh=String(d.shop||'').trim().toLowerCase(),cur=demo.me;
+ if(a==='get'){if(!demo.shops[sh])return{ok:false,err:'ไม่พบรหัสร้านค้านี้'};return{ok:true,cfg:demo.shops[sh],reviews:demo.revs.filter(r=>r.shop===sh).sort((x,y)=>y.date-x.date)}}
+ if(a==='review'){if(!demo.shops[sh])return{ok:false,err:'ไม่พบร้าน'};demo.revs.push({id:Date.now(),shop:sh,name:d.name,stars:d.stars,text:d.text,date:Date.now(),reply:''});return{ok:true}}
+ if(a==='login'){const u=demo.admins.find(x=>x.u===d.user&&x.p===d.pass);if(!u)return{ok:false,err:'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง'};demo.me=u;return{ok:true,token:'demo',user:u.u,shop:u.s}}
+ if(d.t!=='demo'||!cur)return bad;
+ const ok=cur.s===sh;
+ if(a==='reply'&&ok)demo.revs.find(r=>r.id==d.id).reply=d.reply;
+ else if(a==='del'&&ok)demo.revs=demo.revs.filter(r=>r.id!=d.id);
+ else if(a==='save'&&ok)Object.assign(demo.shops[sh],d.cfg);
+ else if(a==='chpw')cur.p=d.pass;
+ else if(a==='addAdmin')demo.admins.push({u:d.user,p:d.pass,s:cur.s});
+ else return bad;
+ return{ok:true}}
+async function api(a,d={}){load(1);try{await new Promise(r=>setTimeout(r,500));const p={a,t:tok,shop:SH,...d};if(!CONFIG.API)return demoCall(a,p);const r=await fetch(CONFIG.API,{method:'POST',body:JSON.stringify(p)});return await r.json()}catch(e){return{ok:false,err:'เชื่อมต่อไม่ได้'}}finally{load(0)}}
+async function refresh(){if(!SH){if(!tok)view='code';theme();return render()}const r=await api('get');if(r.ok){S.cfg=r.cfg;S.reviews=r.reviews;ed=JSON.parse(JSON.stringify(r.cfg))}else{toast(r.err||'โหลดไม่ได้');if(!tok){SH='';history.replaceState(null,'',location.pathname);view='code'}}theme();render()}
+async function enter(){const c=$('cd').value.trim().toLowerCase();if(!c)return toast('ใส่รหัสร้านก่อนนะ 🐱');SH=c;const r=await api('get');if(!r.ok){SH='';return toast(r.err||'ไม่พบรหัสร้านค้า')}history.replaceState(null,'','?shop='+encodeURIComponent(c));S.cfg=r.cfg;S.reviews=r.reviews;ed=JSON.parse(JSON.stringify(r.cfg));view='home';theme();render();confetti()}
+function theme(){const t=THEMES[S.cfg.theme]||THEMES.pink,s=document.documentElement.style;s.setProperty('--p',t[1]);s.setProperty('--bg',t[2]);s.setProperty('--d',t[3]);$('hn').textContent='🐾 '+(SH?S.cfg.name:'รีวิวร้านค้า')}
+
+/* ===== เมนู ===== */
+function tm(){if(!SH)return toast('ใส่รหัสร้านค้าก่อนนะ 🐱');$('shell').classList.toggle('open')}
+function go(k){$('shell').classList.remove('open');
+ if(k==='rv'){view=SH?'home':'code';render();setTimeout(()=>$('list')&&$('list').scrollIntoView({behavior:'smooth'}),50)}
+ if(k==='ct')sheet('<h2>💬 ติดต่อร้านค้า</h2>'+(S.cfg.contacts.length?S.cfg.contacts.map(c=>`<a class="ct" target="_blank" rel="noopener" href="${esc(CT[c.type][2](c.value))}"><span style="font-size:24px">${CT[c.type][1]}</span><div><b>${CT[c.type][0]}</b><br><small>${esc(c.value)}</small></div></a>`).join(''):'<div class="empty">ร้านยังไม่ได้เพิ่มช่องทางติดต่อ 🐱</div>'));
+ if(k==='web')window.open(CONFIG.BUILDER_URL,'_blank');
+ if(k==='rep')window.open(CONFIG.REPORT_URL,'_blank');
+ if(k==='ad'){view=tok?'admin':'login';render();scrollTo(0,0)}}
+function sheet(h){$('shb').innerHTML=h;$('sh').classList.add('show')}
+
+/* ===== หน้าลูกค้า ===== */
+const avg=()=>S.reviews.length?(S.reviews.reduce((a,r)=>a+Number(r.stars),0)/S.reviews.length):0;
+const ago=t=>{const m=(Date.now()-t)/6e4;return m<1?'เมื่อกี้':m<60?Math.floor(m)+' นาทีที่แล้ว':m<1440?Math.floor(m/60)+' ชม.ที่แล้ว':new Date(+t).toLocaleDateString('th-TH',{day:'numeric',month:'short',year:'2-digit'})};
+const star=n=>'★'.repeat(n)+'☆'.repeat(5-n);
+function like(b,id){liked[id]=!liked[id];b.classList.toggle('on',liked[id]);b.textContent=liked[id]?'♥':'♡';if(liked[id]){const r=b.getBoundingClientRect();burst(r.left+9,r.top,5,['💖'])}}
+const rvHTML=(r,adm,i)=>`<div class="rv" style="--i:${i||0}"><div class="top"><b>${esc(r.name)}</b><small>${ago(r.date)}</small></div><div class="top"><span class="st">${star(+r.stars)}</span>${adm?'':`<button class="lk ${liked[r.id]?'on':''}" onclick="like(this,'${esc(r.id)}')" aria-label="ถูกใจ">${liked[r.id]?'♥':'♡'}</button>`}</div><p>${esc(r.text)}</p>${r.reply?`<div class="reply">🐱 ร้านตอบกลับ: ${esc(r.reply)}</div>`:''}${adm?`<div class="row" style="margin-top:8px"><input id="r${r.id}" placeholder="ตอบกลับรีวิวนี้..." value="${esc(r.reply)}" style="margin:0"><button class="btn s" onclick="reply('${r.id}')">ส่ง</button></div>`:''}</div>`;
+function render(){const a=$('app');if(view==='home'&&!SH)view='code';document.querySelector('.burger').disabled=!SH;if(!SH)$('shell').classList.remove('open');ed=ed||{name:'',theme:'pink',contacts:[]};
+ if(view==='code')a.innerHTML=`<div class="card hero">${cat()}<h2 style="margin-top:8px">ใส่รหัสร้านค้า</h2><input id="cd" placeholder="เช่น cat01" autocapitalize="off" style="text-align:center" onkeydown="if(event.key==='Enter')enter()"><button class="btn" onclick="enter()">เข้าร้าน 🐾</button>${CONFIG.API?'':'<p><small>โหมดทดลอง: ลองรหัส demo หรือ cat</small></p>'}</div>`;
+ if(view==='home'){a.innerHTML=`<div class="card hero">${cat()}<div class="big"><span id="av">0.0</span> <span class="st" style="font-size:28px">★</span></div><small>จาก ${S.reviews.length} รีวิว</small></div>
+ <div class="card"><h2>✍️ เขียนรีวิวให้ร้านนี้</h2><input id="nm" maxlength="40" placeholder="ชื่อของคุณ"><div class="stars" id="sr">${[1,2,3,4,5].map(i=>`<button onclick="setS(${i},event)" aria-label="${i} ดาว" class="${i<=stars?'on':''}" style="--i:${i}">★</button>`).join('')}</div><textarea id="tx" maxlength="500" placeholder="เล่าประสบการณ์ของคุณ..."></textarea><button class="btn" onclick="send()">ส่งรีวิว 💌</button></div>
+ <div class="card" id="list"><h2>⭐ รีวิวทั้งหมด (${S.reviews.length})</h2>${S.reviews.length?S.reviews.map((r,i)=>rvHTML(r,0,i)).join(''):'<div class="empty">ยังไม่มีรีวิว มาเป็นคนแรกเลย! 🐾</div>'}</div>`;countUp($('av'),avg(),1)}
+ if(view==='login')a.innerHTML=`<div class="card" style="text-align:center">${cat()}<h2>เข้าสู่ระบบแอดมิน</h2><input id="lu" placeholder="ชื่อผู้ใช้" autocapitalize="off"><input id="lp" type="password" placeholder="รหัสผ่าน"><button class="btn" onclick="login()">เข้าสู่ระบบ</button><p><a href="#" onclick="view='home';render();return false" style="color:var(--d)">← กลับหน้าร้าน</a></p>${CONFIG.API?'':'<small>โหมดทดลอง: admin / 1234</small>'}</div>`;
+ if(view==='admin')adminR(a)}
+function setS(n,e){stars=n;[...$('sr').children].forEach((b,i)=>{b.classList.remove('on');void b.offsetWidth;b.classList.toggle('on',i<n)});if(e){const r=e.currentTarget.getBoundingClientRect();burst(r.left+r.width/2,r.top,4,['⭐','✨'])}}
+async function send(){const name=$('nm').value.trim(),text=$('tx').value.trim();if(!name||!stars||!text)return toast('กรอกชื่อ ให้ดาว และเขียนรีวิวก่อนนะ 🐱');
+ const r=await api('review',{name,stars,text});if(!r.ok)return toast(r.err||'ส่งไม่สำเร็จ');stars=0;meow();confetti();toast('ขอบคุณสำหรับรีวิวค่ะ 💖');await refresh()}
+
+/* ===== หลังบ้านแอดมิน ===== */
+async function login(){const r=await api('login',{user:$('lu').value.trim(),pass:$('lp').value});if(!r.ok)return toast(r.err);tok=r.token;me=r.user;mys=r.shop;SH=mys;view='admin';tab='stats';await refresh();toast('ยินดีต้อนรับ '+me+' 🐱')}
+function logout(){tok=null;me='';mys='';view='home';render()}
+function adminR(a){const T={stats:'📊 สถิติ',rv:'💬 รีวิว',shop:'🏪 ร้านค้า',th:'🎨 ธีม',acc:'🔑 บัญชี'};
+  let h=`<div class="tabs">${Object.keys(T).map(k=>`<button class="${k===tab?'on':''}" onclick="tab='${k}';render()">${T[k]}</button>`).join('')}<button onclick="logout()">ออก</button></div><div class="card">`;
+ if(tab==='stats'){const c=[5,4,3,2,1].map(n=>S.reviews.filter(r=>+r.stars===n).length),tot=S.reviews.length||1;
+  h+=`<h2>📊 สถิติดาว</h2><div style="text-align:center;font-size:40px;font-weight:700;color:var(--d)">${avg().toFixed(2)} ★</div><div style="text-align:center"><small>${S.reviews.length} รีวิว</small></div>`+c.map((n,i)=>`<div class="bar"><span>${5-i}★</span><div><i style="width:${n/tot*100}%;animation-delay:${i*.1}s"></i></div><span>${n}</span></div>`).join('')}
+ if(tab==='rv')h+=`<h2>💬 ตรวจสอบรีวิว</h2>`+(S.reviews.length?S.reviews.map((r,i)=>rvHTML(r,1,i)).join(''):'<div class="empty">ยังไม่มีรีวิว</div>');
+ if(tab==='shop')h+=`<h2>🏪 ข้อมูลร้านค้า</h2><small>ลิงก์รีวิวของร้านนี้ (รหัส: ${esc(SH)})</small><input readonly value="${esc(location.href.split('?')[0].split('#')[0]+'?shop='+SH)}" onclick="this.select()"><input id="sn" value="${esc(ed.name)}" placeholder="ชื่อร้านค้า" oninput="ed.name=this.value"><h2 style="margin-top:8px">ช่องทางติดต่อ (สูงสุด 6)</h2>`+ed.contacts.map((c,i)=>`<div class="row"><select onchange="ed.contacts[${i}].type=this.value">${Object.keys(CT).map(k=>`<option value="${k}" ${k===c.type?'selected':''}>${CT[k][0]}</option>`).join('')}</select><input value="${esc(c.value)}" placeholder="ID / เบอร์ / ลิงก์" oninput="ed.contacts[${i}].value=this.value"><button class="btn s r" style="margin-bottom:10px" onclick="ed.contacts.splice(${i},1);render()">✕</button></div>`).join('')+(ed.contacts.length<6?`<button class="btn g" style="margin-bottom:10px" onclick="ed.contacts.push({type:'line',value:''});render()">+ เพิ่มช่องทาง</button>`:'')+`<button class="btn" onclick="saveCfg()">บันทึก</button>`;
+ if(tab==='th')h+=`<h2>🎨 สีธีมเว็บไซต์</h2><div class="themes">${Object.keys(THEMES).map(k=>`<button class="${k===ed.theme?'on':''}" style="background:${THEMES[k][1]};color:${THEMES[k][3]}" onclick="ed.theme='${k}';S.cfg.theme='${k}';theme();render()">${THEMES[k][0]}</button>`).join('')}</div><br><button class="btn" onclick="saveCfg()">บันทึกธีม</button>`;
+ if(tab==='acc')h+=`<h2>🔑 เปลี่ยนรหัสผ่าน</h2><input id="pw" type="password" placeholder="รหัสผ่านใหม่"><button class="btn" onclick="chpw()">เปลี่ยนรหัสผ่าน</button><h2 style="margin-top:20px">➕ เพิ่มแอดมินของร้านนี้</h2><input id="au" placeholder="ชื่อผู้ใช้" autocapitalize="off"><input id="ap" type="password" placeholder="รหัสผ่าน"><button class="btn" onclick="addAd()">เพิ่มแอดมิน</button>`;
+ a.innerHTML=h+'</div>'}
+async function saveCfg(){ed.contacts=ed.contacts.filter(c=>c.value.trim());const r=await api('save',{cfg:ed});if(!r.ok)return toast(r.err);S.cfg=JSON.parse(JSON.stringify(ed));theme();render();toast('บันทึกแล้ว ✨');confetti()}
+async function reply(id){const r=await api('reply',{id,reply:$('r'+id).value.trim()});if(!r.ok)return toast(r.err);toast('ตอบกลับแล้ว 💬');await refresh()}
+function del(id){const r=S.reviews.find(x=>String(x.id)===String(id));sheet(`<h2>🗑️ ลบรีวิวนี้?</h2><p style="font-size:14px">${esc(r?r.name:'')}: ${esc(r?r.text.slice(0,80):'')}<br><small>ลบแล้วกู้คืนไม่ได้นะ</small></p><div class="row"><button class="btn g" onclick="$('sh').classList.remove('show')">ยกเลิก</button><button class="btn r" onclick="doDel('${esc(id)}')">ลบเลย</button></div>`)}
+async function doDel(id){$('sh').classList.remove('show');const r=await api('del',{id});if(!r.ok)return toast(r.err||'ลบไม่สำเร็จ');toast('ลบรีวิวแล้ว 🗑️');await refresh()}
+async function chpw(){const p=$('pw').value;if(p.length<4)return toast('รหัสผ่านอย่างน้อย 4 ตัว');const r=await api('chpw',{pass:p});toast(r.ok?'เปลี่ยนรหัสผ่านแล้ว 🔒':r.err);$('pw').value=''}
+async function addAd(){const user=$('au').value.trim(),pass=$('ap').value;if(!user||pass.length<4)return toast('กรอกชื่อและรหัสผ่าน (4 ตัวขึ้นไป)');const r=await api('addAdmin',{user,pass});toast(r.ok?'เพิ่มแอดมินแล้ว 🐱':r.err);if(r.ok){$('au').value=$('ap').value=''}}
+refresh();
+</script></body></html>
